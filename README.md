@@ -34,10 +34,9 @@ The source code is present in Azure Repos. I have taken the Source Code present 
 ![image](https://github.com/user-attachments/assets/93e45705-d8af-4470-9b4b-6a61795e61b7)
 ![image](https://github.com/user-attachments/assets/52a4d878-e348-4879-9080-520fd8ae0144)
 ![image](https://github.com/user-attachments/assets/165fcdd2-bd18-4216-9d68-4dd870ff4315)
-![image](https://github.com/user-attachments/assets/17350f3f-b2ab-4249-a487-0dbd0ef4fdaf)
 ![image](https://github.com/user-attachments/assets/6ce3a359-5e45-4c06-9873-b2fdfa12bd4b)
 
 For Azure Artifacts, copy below section and paste to pom.xml as I have shown in above screenshot.
 
 ![image](https://github.com/user-attachments/assets/fd075de2-d74e-4ea6-9dbf-01df84a32d95)
-
+![image](https://github.com/user-attachments/assets/17350f3f-b2ab-4249-a487-0dbd0ef4fdaf)

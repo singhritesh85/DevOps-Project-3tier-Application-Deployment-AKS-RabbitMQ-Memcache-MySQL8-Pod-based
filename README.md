@@ -63,3 +63,11 @@ Now Run the Azure Pipeline. Create the URL using ingress rule for service presen
 
 When you click on the User for the first time it will get the values from MySQL Database and store it in Memcache, so that next time when you click on the same user it will provide the values from the Memcache itself.
 
+![image](https://github.com/user-attachments/assets/74e36c97-17d3-4770-8dd0-dc0271d604cd)
+![image](https://github.com/user-attachments/assets/80d161a9-4d66-4612-86ba-a58ce105ba15)
+
+After running the Azure Pipeline Screenshots for RabbitMQ, SonarQube, Azure Artifacts are as shown in the Screenshot below.
+![image](https://github.com/user-attachments/assets/99232d56-42d6-40fd-9352-f73b1a1aa07a)
+![image](https://github.com/user-attachments/assets/00baccfa-c68b-443e-9b81-52c29e6ced08)
+![image](https://github.com/user-attachments/assets/de4ae218-df46-4d7b-8c8c-587d91955835)
+![image](https://github.com/user-attachments/assets/9573a2aa-5595-47a6-8dad-5d83e4a45fd6)

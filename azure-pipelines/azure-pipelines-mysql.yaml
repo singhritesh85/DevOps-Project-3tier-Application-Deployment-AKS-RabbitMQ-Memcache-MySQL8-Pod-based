@@ -1,0 +1,47 @@
+trigger:
+- none
+
+pool: 
+  name: demo
+  demands:
+  - agent.name -equals demo
+
+stages:
+- stage: MySQLDeployment
+  displayName: MySQLDeployment
+  jobs:
+  - job: HelmRepoAdd
+    displayName: HelmRepoAdd
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo update
+          DEXTER_CONFIGMAP=`kubectl get cm -n mysql| grep "db-scheme"`
+          if [[ "$DEXTER_CONFIGMAP" -eq NULL ]]    ### Checking whether configmap db-scheme exists or not
+          then
+            kubectl create configmap db-scheme --from-file=src/main/resources/db_backup.sql -n mysql
+          fi
+  - deployment: MySQLDeployment
+    displayName: MySQLDeployment
+    environment: "dev"
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: none
+          - task: HelmDeploy@1
+            inputs:
+              connectionType: 'Azure Resource Manager'
+              azureSubscription: 'Azure DevOps Service Connection'
+              azureResourceGroup: 'aks-rg'
+              kubernetesCluster: 'aks-cluster'
+              namespace: 'mysql'
+              command: 'upgrade'
+              chartType: 'Name'
+              chartName: 'bitnami/mysql'
+              chartVersion: '11.0.0'
+              releaseName: 'mysql'
+              overrideValues: 'secondary.replicaCount=1,primary.persistence.enabled=true,primary.persistence.size=1Gi,architecture=replication,secondary.persistence.enabled=true,secondary.persistence.size=1Gi,primary.service.type=ClusterIP,auth.rootPassword=Dexter@123,auth.database=accounts,initdbScriptsConfigMap=db-scheme'
+          

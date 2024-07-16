@@ -40,3 +40,26 @@ For Azure Artifacts, copy below section and paste to pom.xml as I have shown in 
 
 ![image](https://github.com/user-attachments/assets/fd075de2-d74e-4ea6-9dbf-01df84a32d95)
 ![image](https://github.com/user-attachments/assets/17350f3f-b2ab-4249-a487-0dbd0ef4fdaf)
+
+Provide Contributor Access for Azure Artifacts as shown in screenshot below.
+
+![image](https://github.com/user-attachments/assets/7ab147b5-9250-4ff6-a972-7953924f4a53)
+![image](https://github.com/user-attachments/assets/6448484b-2f7e-4e73-97cd-bbc04a08b62f)
+
+I have created configmap to import the tables into the database. This step was done in the Azure-Pipeline itself as shown in the screenshot below.
+![image](https://github.com/user-attachments/assets/5fd34021-94e9-4783-82ba-72e7b0dfc459)
+![image](https://github.com/user-attachments/assets/39904f02-3f8d-4dce-8370-98e59545be29)
+
+I have created Service service Connection for SonarQube, Azure Artifacsts, Azure Container Registries and DockerHub Repository as shown below.
+
+![image](https://github.com/user-attachments/assets/ddb22a7f-c30e-444c-972f-5779257456fe)
+![image](https://github.com/user-attachments/assets/b41e22a6-f3e1-458d-92fe-6b825cc8cbac)
+
+Now Run the Azure Pipeline. Create the URL using ingress rule for service present in the file ingress-rule.yaml in this repository. Do the entry for this URL with Public IP in Record Set of Azure DNS Zone. Access the newly created URL and provide username admin_vp and password admin_vp.
+![image](https://github.com/user-attachments/assets/f9031450-3c7c-40c4-bb7b-abaec0130166)
+![image](https://github.com/user-attachments/assets/251c4f21-3bfc-4a61-9b2e-2c3f2635dad5)
+![image](https://github.com/user-attachments/assets/e180d826-05ea-426a-992d-79b4a666d4a4)
+![image](https://github.com/user-attachments/assets/2255875d-e0a6-4548-95bc-629829faf123)
+
+When you click on the User for the first time it will get the values from MySQL Database and store it in Memcache, so that next time when you click on the same user it will provide the values from the Memcache itself.
+

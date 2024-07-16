@@ -1,0 +1,43 @@
+trigger:
+- none
+
+pool: 
+  name: demo
+  demands:
+  - agent.name -equals demo
+
+stages:
+- stage: RabbitMQDeployment
+  displayName: RabbitMQDeployment
+  jobs:
+  - job: HelmRepoAdd
+    displayName: HelmRepoAdd
+    steps:
+    - checkout: none
+    - task: CmdLine@2
+      inputs:
+        script: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo update
+  - deployment: RabbitMQDeployment
+    displayName: RabbitMQDeployment
+    environment: "dev"
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+          - checkout: none
+          - task: HelmDeploy@1
+            inputs:
+              connectionType: 'Azure Resource Manager'
+              azureSubscription: 'Azure DevOps Service Connection'
+              azureResourceGroup: 'aks-rg'
+              kubernetesCluster: 'aks-cluster'
+              namespace: 'rabbitmq'
+              command: 'upgrade'
+              chartType: 'Name'
+              chartName: 'bitnami/rabbitmq'
+              chartVersion: '10.2.1'
+              releaseName: 'rabbitmq'
+              overrideValues: 'auth.username=ritesh,auth.password=Dexter@123,auth.erlangCookie=c2VjcmV0Y29va2ll,metrics.enabled=false,persistence.enabled=true,persistence.size=1Gi,clustering.enabled=true,replicaCount=3,service.type=ClusterIP,service.ports.manager=15672'
+          

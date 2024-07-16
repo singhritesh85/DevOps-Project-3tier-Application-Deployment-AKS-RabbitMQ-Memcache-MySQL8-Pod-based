@@ -26,5 +26,18 @@ rabbitmqctl set_policy ha-all ".*" '{"ha-mode":"all","ha-sync-mode":"automatic"}
 ![image](https://github.com/user-attachments/assets/e9d73082-fd5c-4805-a1e7-62c4c2b951cc)
 
 Create Ingress rule using the rabbitmq-ingress-rule.yaml file as present in this repository and do the entry in Azure dns-zone for Hosts corresponding to IP Address as shown below.
-![image](https://github.com/user-attachments/assets/ccb45e13-73fc-49ba-9f24-f09e542e00c4)
+![image](https://github.com/user-attachments/assets/fe0a0349-729e-4b5d-805e-4cc6c54ab8b7)
 ![image](https://github.com/user-attachments/assets/de8b359e-0c55-46cd-b911-fbdcab8ed567)
+![image](https://github.com/user-attachments/assets/a159ecb4-3ab9-44a0-bcde-c988fe8fc3c0)
+
+The source code is present in Azure Repos. I have taken the Source Code present in GitHub Repository https://github.com/singhritesh85/Three-tier-WebApplication.git and did changes in pom.xml, Dockerfile, application.properties as shown below.
+![image](https://github.com/user-attachments/assets/93e45705-d8af-4470-9b4b-6a61795e61b7)
+![image](https://github.com/user-attachments/assets/52a4d878-e348-4879-9080-520fd8ae0144)
+![image](https://github.com/user-attachments/assets/165fcdd2-bd18-4216-9d68-4dd870ff4315)
+![image](https://github.com/user-attachments/assets/17350f3f-b2ab-4249-a487-0dbd0ef4fdaf)
+![image](https://github.com/user-attachments/assets/6ce3a359-5e45-4c06-9873-b2fdfa12bd4b)
+
+For Azure Artifacts, copy below section and paste to pom.xml as I have shown in above screenshot.
+
+![image](https://github.com/user-attachments/assets/fd075de2-d74e-4ea6-9dbf-01df84a32d95)
+
